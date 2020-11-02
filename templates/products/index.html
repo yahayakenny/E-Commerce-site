@@ -1,0 +1,37 @@
+{% extends 'products/base.html' %}
+{% load static%}
+{% block content %}
+<br /><br />
+
+<div class="container">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{{product.product_image.url}}" alt="" style="width: 100%" />
+        <div class="card-body">
+          <h4 class="text-center ">{{product.name}}</h4>
+          <h6 class="text-center lead">₦{{product.price}}</h6>
+          <h6 class = "lead text-center lead">Category: {{product.category}}</h6>
+          <br/>
+          <h5 class = "text-center">
+            <a href="{% url 'product_detail' product.id %} " class = "text-dark"
+              >View More </a>
+          </h5>
+          <hr /> <br/>
+          <div style = "display: flex; justify-content: space-between">
+            <a href = "add_to_cart/{{product.slug}}" class="btn btn-dark btn-sm" style = "width: 150px">
+              Add to Cart
+            </a>   
+            <a href = "remove_from_cart/{{product.slug}}" class="btn btn-dark btn-sm" style = "width: 150px">
+              Remove from Cart
+            </a>   
+          </div>  
+        </div>
+      </div>
+      <br/><br />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock%}

@@ -1,0 +1,24 @@
+{% extends 'products/base.html' %}
+{% load static%}
+{% block content %}
+<br /><br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{{product.product_image.url}}" alt="" style="width: 100%" />
+        <div class="card-body">
+          <h3 class="text-center">₦{{product.price}}</h3>
+          <hr /> 
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+        <br><br>
+        <h1>Description</h1>
+        <h6 class = "lead">{{product.product_description}}</h6>
+        <br>
+    </div>
+  </div>
+</div>
+{% endblock%}

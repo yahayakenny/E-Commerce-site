@@ -1,0 +1,35 @@
+{% extends 'products/base.html' %}
+{% load static%}
+{% block content %}
+<br /><br />
+<form>
+    <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+    <div class = "container">
+        <h3>PAYMENT PAGE</h3>
+        <button type="button" onClick="payWithRave()">PAY HERE</button>
+    </div>
+     
+</form>
+<script>
+    const publicKey = "{{ key }}";
+
+    function payWithRave() {
+        var x = getpaidSetup({
+            PBFPubKey: publicKey,
+            customer_email: "{{get_email}}",
+            amount: "{{order_total}}",
+            customer_phone: "{{get_number}}",
+            currency: "NGN",
+            txref: "rave-123456",
+            custom_title: "Yahaya Kehinde's Payment Gateway",
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.tx.txRef;
+                console.log("This is the response returned after a charge", response);
+                x.close();
+            }
+        });
+    }
+</script>
+
+{% endblock%}
