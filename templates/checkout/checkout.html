@@ -4,32 +4,27 @@
 
 <div class="container">
     <br><br>
-
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
+            <h1 class = "text-center">CUSTOMER DETAILS</h1>
             <form method = "POST" action= "{% url 'payments' %}">
                 {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" name = "submit"/>
+                {{form | crispy}}
+                <input type="submit" name = "submit" class = "btn-secondary btn-lg" />
             </form>
         </div>
-        <div class="col-md-3">
-            <div class="card" style="height: auto">
+        <div class="col-md-4">
+            <br><br>
+            <div class="card">
               <div class="card-body">
-               Order Items
+               ORDER SUMMARY
               </div>
                  <div class="card-footer">
                   <span class="float-left"><b>Order Total</b></span>
-                  <span class="float-right"><b>$ {{ order_total | floatformat:2 }}</b></span>
+                  <span class="float-right"><b> ₦{{ order_total | floatformat:2 }}</b></span>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
-
-
-
-
 {% endblock %}
