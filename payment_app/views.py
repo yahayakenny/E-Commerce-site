@@ -18,8 +18,6 @@ def payments(request):
             get_email = form.cleaned_data.get('email')
             form.save()
 
-
-
     context = {
         'key': settings.RAVE_PUBLIC_KEY,
         'order_total': order_total,

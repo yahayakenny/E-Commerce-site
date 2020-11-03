@@ -55,7 +55,7 @@ def remove_from_cart(request, slug):
 
             else:
                 cart_qs.delete()
-                messages.info(request, 'This item was not in your cart')
+                messages.info(request, 'This item is not in your cart')
                 return redirect('home') 
         
         else:
