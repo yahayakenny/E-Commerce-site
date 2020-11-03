@@ -3,6 +3,10 @@ body, html {
     overflow-x: hidden;
 }
 
+body {
+    background-color: url('/static/images/bg1.jpg')
+}
+
 .card-img-top{
     transition: all .2s ease-in-out; 
 }
