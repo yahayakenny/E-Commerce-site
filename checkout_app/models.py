@@ -6,9 +6,10 @@ User = get_user_model()
 # Billing Address Model
 class Billing(models.Model):
 	# user = models.ForeignKey(User, on_delete=models.CASCADE)
-	address = models.CharField(max_length=100)
+	full_name: models.CharField(max_length=100)
 	email = models.EmailField(default='test@email.com')
 	phone = models.IntegerField(default=234099940409)
+	address = models.CharField(max_length=100)
 
 	def __str__(self):
 		return f'{self.user.username} billing address'

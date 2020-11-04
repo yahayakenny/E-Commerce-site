@@ -24,6 +24,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    session_key = models.CharField(max_length=40, null=True)
 
     def __str__(self):
         return self.user.username

@@ -41,10 +41,9 @@ INSTALLED_APPS = [
     'cart_app',
     'checkout_app',
     'payment_app',
+    'accounts_app',
     'crispy_forms',
-
-
-
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +136,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 RAVE_PUBLIC_KEY = 'FLWPUBK-b18a64a8a0456cda44a1510b8d8e8452-X'
 RAVE_SECRET_KEY = 'FLWSECK-fb152ea4ba89fbcda432a75ab16e0d17-X'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'

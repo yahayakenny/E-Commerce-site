@@ -10,6 +10,8 @@ def payments(request):
     
     order_qs = Order.objects.filter(ordered=False)
     order_total = order_qs[0].get_totals()
+    print(order_total)
+    print()
 
     if request.method == 'POST':
         form = BillingForm(request.POST or None)
@@ -17,6 +19,10 @@ def payments(request):
             get_number = form.cleaned_data.get('phone')
             get_email = form.cleaned_data.get('email')
             form.save()
+            print(get_number)
+            print(get_email)
+
+
 
     context = {
         'key': settings.RAVE_PUBLIC_KEY,

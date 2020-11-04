@@ -1,0 +1,26 @@
+{% extends 'products/base.html' %} {% load crispy_forms_tags %}
+{% block content %}
+<div>
+  <br>
+    <h1 class="text-center message" style = "color: rgb(139, 0, 139)">Register Here</h1>
+<div class = "container">
+    <br>
+  <form method="POST" class = "login-form shadow-lg p- mb-5 bg-white container">
+    {% csrf_token %} 
+    {{form | crispy}}
+    <br>
+    <input
+      type="submit"
+      name="Register"
+      class="btn btn-block"
+      type="button"
+      style = "color: white ;background-color: rgb(139, 0, 139)"
+    /> <br>
+    <h6>Already have an account yet?</h6>
+    <a href="{% url 'login' %}">Login Here
+    </a>
+  </form>
+</div>
+</div>
+
+{% endblock %}

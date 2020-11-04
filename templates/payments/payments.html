@@ -4,14 +4,15 @@
 <br /><br />
 <form>
     <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-    <div class = "container">
+    <div class = "container shadow-lg p- mb-5 bg-white container">
+        <br><br/>
         <h1 class = "text-center">PAYMENT PAGE</h1>
         <br><br/>
         <div class = "text-center">
-            <button type="button" onClick="payWithRave()" class = "btn-lg btn-secondary">CLICK HERE TO PAY</button>
-        </div>   
-    </div>
-     
+            <button type="button" onClick="payWithRave()" class = "btn-lg btn-success">CLICK HERE TO PAY</button>
+        </div>  
+        <br><br/> 
+    </div> 
 </form>
 <script>
     const publicKey = "{{ key }}";

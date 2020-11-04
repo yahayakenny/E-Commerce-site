@@ -29,12 +29,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav ml-auto">
+            {% if user.is_authenticated%}
+            <li class="nav-item active">
+              <a class="nav-link active" href="">Hello {{user.username | title}} <span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">HOME</a>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'cart' %}">
                   <i class="fa fa-shopping-cart"></i> Cart
-                  <span class="badge badge-light">{{request.user | cart_total}}</span>
                 </a>
               </li> 
               <li class="nav-item">
@@ -42,16 +45,32 @@
                   CHECKOUT
                 </a>
               </li>   
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                 LOGOUT
+                </a>
+              </li>   
+              {% else %}  
+             
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">
+                 REGISTER
+                </a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">
+                 LOGIN
+                </a>
+              </li>   
+              {% endif %}
           </ul>
       </nav>
-
      {% if messages %}
      {% for message in messages %}
-      <br><br/>
+      <br>
       <h6 class ="text-center lead">{{message}}</h6>
      {% endfor %}
-      {% endif %}
-
+    {% endif %}
     {% block content%}
 
     {% endblock%}

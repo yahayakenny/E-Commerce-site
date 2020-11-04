@@ -4,7 +4,17 @@ body, html {
 }
 
 body {
-    background-color: url('/static/images/bg1.jpg')
+    background-image: url('/static/images/bg2.jpg');
+    width: 100% !important;
+    height: 800px;
+    position: relative;
+    background-position:center; 
+    background-attachment:scroll; 
+    -o-background-size:cover; 
+    -moz-background-size:cover; 
+    -webkit-background-size:cover; 
+    background-size:cover; 
+    background-repeat:no-repeat;
 }
 
 .card-img-top{
@@ -13,4 +23,26 @@ body {
 
 .card-img-top:hover {
     transform: scale(1.1);
+}
+
+.w-100 {
+    width: 100% !important;
+    height: 90vh
+  }
+
+.login-form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+@media(max-width:767px){
+    .w-100 {
+        width: 100% !important;
+        height: 400px
+      }
+
+      .login-form {
+        margin: 0 auto;
+        width: 90%;
+    }
 }

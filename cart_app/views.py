@@ -6,31 +6,55 @@ from django.contrib import messages
 
 # Create your views here.
 def add_to_cart(request, slug):
-    item = get_object_or_404(Product, slug = slug)
-    order_item, created = Cart.objects.get_or_create(
-        item = item,
-        user = request.user
-    )
-    order_qs = Order.objects.filter(user = request.user, ordered=False)
-    if order_qs.exists():
-        order = order_qs[0]
-        if order.orderitems.filter(item__slug = item.slug).exists():
-            order_item.quantity += 1
-            order_item.save()
-            messages.info(request, 'Your shopping cart was updated')
-            return redirect('home')
-        else: 
+    if request.user.is_authenticated:
+        item = get_object_or_404(Product, slug = slug)
+        order_item, created = Cart.objects.get_or_create(
+            item = item,
+            user = request.user
+        )
+        order_qs = Order.objects.filter(user = request.user, ordered=False)
+        if order_qs.exists():
+            order = order_qs[0]
+            if order.orderitems.filter(item__slug = item.slug).exists():
+                order_item.quantity += 1
+                order_item.save()
+                messages.info(request, 'Your shopping cart was updated')
+                return redirect('home')
+            else: 
+                order.orderitems.add(order_item)
+                messages.info(request, 'This item was added to your cart')
+                return redirect('home')
+        else:
+            order = Order.objects.create(
+                user=request.user)
             order.orderitems.add(order_item)
-            messages.info(request, 'This item was added to your cart')
-            return redirect('home')
+            messages.info(request, "This item was added to your cart.")
+            return redirect("home")
+    
     else:
-        order = Order.objects.create(
-            user=request.user)
-        order.orderitems.add(order_item)
-        messages.info(request, "This item was added to your cart.")
+        item = get_object_or_404(Product,slug=slug)
+        order_item ,created = Cart.objects.get_or_create(
+            user=None,
+            item =item,
+        )
+        
+        order_qs = Order.objects.filter(user=None, ordered=False, session_key=request.session.session_key)
+        if order_qs.exists():
+            order= order_qs[0]
+            # check if the order item is in the order
+            if order.orderitems.filter(item__slug=item.slug).exists():
+                order_item.quantity+= 1
+                order_item.save()
+            else:
+                order.orderitems.add(order_item)
+        else:
+            order = Order.objects.create(
+                user=None, session_key=request.session.session_key
+            )
+            order.orderitems.add(order_item)
         return redirect("home")
 
-    
+        
 
 
 def remove_from_cart(request, slug):
@@ -64,6 +88,7 @@ def remove_from_cart(request, slug):
 
 
 def cart(request):
+   
     user = request.user
     carts = Cart.objects.filter(
         user=user

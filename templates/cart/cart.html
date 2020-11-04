@@ -1,5 +1,6 @@
 {% extends 'products/base.html' %}
 {% block content %}
+{% load humanize %}
 <!--Section: Block Content-->
 <section class = "container">
   <br><br/>
@@ -28,12 +29,11 @@
               <td>₦{{ cart.get_total }}</td>
             </tr>
           {% endfor %}
-       
             <tr>
               <th scope="row"></th>
               <td col="row">Total</td>
               <th scope="row"></th>
-              <td>₦{{ order.get_totals| floatformat }}</td>
+              <td>₦{{ order.get_totals|floatformat:2|intcomma }}</td>
             </tr>
             <tr>
               <th scope="row"></th>
@@ -44,13 +44,11 @@
             </tr>
           </tbody>
         </table>
-
       </div>
       <!-- Card -->
       
     </div>
     <!--Grid column-->
-    
       <div class="col-lg-4">
         <div class = "shadow-lg p- mb-5 bg-white rounded container">
         <div class="mb-3">
@@ -72,11 +70,11 @@
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>₦{{ order.get_totals| floatformat }}</strong></span>
+                <span><strong>{{ order.get_totals |floatformat:2|intcomma}}</strong></span>
               </li>
             </ul>
-            <a href="{% url 'checkout' %}"
-            ><button class="btn btn-secondary mr-4 btn-block">Proceed To Checkout</button></a>
+            <a href="{% url 'checkout' %}" style="text-decoration: none;"
+            ><button class="btn btn-danger mr-4 btn-block">Proceed To Checkout</button></a>
             <br><br/>
           </div>
         </div>
