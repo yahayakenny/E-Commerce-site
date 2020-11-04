@@ -33,44 +33,38 @@
 
 <!--Card-->
 <div class="container">
-  <div class="row">
+  <div class="row"> 
     {% for product in products %}
-    <div class="col-md-4">
-      <div class="card card-cascade card-ecommerce wider">
-        <!--Card image-->
-        <div class="view view-cascade overlay">
-          <img class="card-img-top" src="{{product.product_image.url}}"
-            alt="">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-        <!--/.Card image-->
-      
-        <!--Card content-->
-        <div class="card-body card-body-cascade text-center">
-          <!--Category & Title-->
-          <h5>
-            <a href="{% url 'product_detail' product.id %} " class = "text-dark" style="text-decoration: none;">
-              {{product.name}}</a>
-          </h5>
-          <!--Card footer-->
-          <div class="card-footer" style = "height: 60px">
-            <h4 class="float-left ">₦{{product.price|floatformat:2|intcomma}}</h4>
-            <span class="float-right">
+    <div class="col-lg-4">
+      <figure class="c4-izmir"> 
+        <img src="{{product.product_image.url}}">
+        <figcaption>
+            <h3>
+              {{product.name}}
+        </h3>
+      </figure>
+      <div class="card-body card-body-cascade text-center">
+        <!--Category & Title-->
+        <h5>
+          <a href="{% url 'product_detail' product.id %} " class = "text-dark" style="text-decoration: none;">
+            {{product.name}}</a>
+        </h5>
+        <!--Card footer-->
+        <div class="card-footer" style = "height: 60px">
+          <h4 class="float-left ">₦{{product.price|floatformat:2|intcomma}}</h4>
+          <span class="float-right">
+            <div >
               <a href = "add_to_cart/{{product.slug}}" class="active text-secondary" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-shopping-cart" style = "font-size: 24px"></i></a>
-              <a href = "remove_from_cart/{{product.slug}}" class="btn btn-danger btn">
-                Remove
-              </a>  
-            </span>
-          </div>
+            <a href = "remove_from_cart/{{product.slug}}" class="btn" style = "font-size: 24px; color:rgba(255, 0, 0, 0.582); margin-top: -7px">
+              <i class="fas fa-trash-alt"></i>
+            </a>  
+            </div>  
+          </span>
         </div>
-        <!--/.Card content-->
+        <br><br>
       </div>
-      <br><br/><br><br/>
-      <!--/.Card-->
     </div>
     {% endfor %}
-  </div>
+  </div> 
 </div>
 {% endblock%}
