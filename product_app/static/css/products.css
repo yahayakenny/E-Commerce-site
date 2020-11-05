@@ -17,14 +17,6 @@ body {
     background-repeat:no-repeat;
 }
 
-.card-img-top{
-    transition: all .2s ease-in-out; 
-}
-
-.card-img-top:hover {
-    transform: scale(1.1);
-}
-
 .w-100 {
     width: 100% !important;
     height: 90vh

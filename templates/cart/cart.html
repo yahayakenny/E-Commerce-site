@@ -33,7 +33,7 @@
               <th scope="row"></th>
               <td col="row">Total</td>
               <th scope="row"></th>
-              <td>₦{{ order.get_totals|floatformat:2|intcomma }}</td>
+              <td>₦{{ order.get_totals }}</td>
             </tr>
             <tr>
               <th scope="row"></th>
@@ -70,7 +70,7 @@
                     <p class="mb-0">(including VAT)</p>
                   </strong>
                 </div>
-                <span><strong>{{ order.get_totals |floatformat:2|intcomma}}</strong></span>
+                <span><strong>{{ order.get_totals}}</strong></span>
               </li>
             </ul>
             <a href="{% url 'checkout' %}" style="text-decoration: none;"

@@ -10,6 +10,7 @@ def payments(request):
     
     order_qs = Order.objects.filter(ordered=False)
     order_total = order_qs[0].get_totals()
+
     print(order_total)
     print()
 
