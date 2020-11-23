@@ -51,7 +51,7 @@
         </h5>
         <!--Card footer-->
         <div class="card-footer shadow-lg p- mb-5 bg-white" style = "height: 60px">
-          <h4 class="float-left ">₦{{product.price}}</h4>
+          <h4 class="float-left ">₦{{product.price|floatformat:2|intcomma}}</h4>
           <span class="float-right">
             <div >
               <a href = "add_to_cart/{{product.slug}}" class="active text-secondary" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-shopping-cart" style = "font-size: 24px"></i></a>
