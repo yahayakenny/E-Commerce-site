@@ -3,20 +3,6 @@ body, html {
     overflow-x: hidden;
 }
 
-body {
-    background-image: url('/static/images/bg2.jpg');
-    width: 100% !important;
-    height: 800px;
-    position: relative;
-    background-position:center; 
-    background-attachment:scroll; 
-    -o-background-size:cover; 
-    -moz-background-size:cover; 
-    -webkit-background-size:cover; 
-    background-size:cover; 
-    background-repeat:no-repeat;
-}
-
 .w-100 {
     width: 100% !important;
     height: 90vh
